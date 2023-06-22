@@ -11,14 +11,14 @@ export const UserNav = () => {
       <ul>
         {status === "unauthenticated" ? (
           <li>
-            <Link className="hover:text-slate-600" href="/auth/login">
+            <Link className="hover:text-slate-600" href="/auth/signin">
               Login
             </Link>
           </li>
         ) : null}
         {status === "authenticated" ? (
           <li>
-            <Link className="hover:text-slate-600" href="/auth/logout">
+            <Link className="hover:text-slate-600" href="/auth/signout">
               logout
             </Link>
           </li>

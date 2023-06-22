@@ -1,5 +1,6 @@
 import type { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+import { UserService } from "../services/user.service";
 const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
 export const authOptions: NextAuthOptions = {
@@ -39,8 +40,6 @@ export const authOptions: NextAuthOptions = {
         );
 
         const user = await res.json();
-        console.log(user);
-
         if (user) {
           // Any object returned will be saved in `user` property of the JWT
           return user;
@@ -59,15 +58,7 @@ export const authOptions: NextAuthOptions = {
     async session({ session, user, token }) {
       return session;
     },
-    async jwt({ token, user, account, profile, isNewUser }) {
-      // if token is expired
-      // if (token.expiresAt > new Date()) {
-      //    // regenerate and return new token
-      // }
-
-      // no control over the arguments passed here
-      // can't write logic here to regenerate token on command even if its not expired.
-
+    async jwt({ token, user, account }) {
       return token;
     },
   },

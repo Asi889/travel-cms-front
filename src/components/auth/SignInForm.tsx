@@ -23,7 +23,6 @@ export const SignInForm = () => {
       password: inputs.password,
       redirect: false,
     });
-    console.log(res);
     if (!res || res?.error) {
       setLoginError(res?.error || "Something went wrong");
       setIsLoader(false);
@@ -50,7 +49,6 @@ export const SignInForm = () => {
           type="email"
           name="email"
           id="email"
-          className="border border-slate-400 w-full"
         />
       </label>
       <label>
@@ -61,7 +59,6 @@ export const SignInForm = () => {
           value={inputs.password}
           name="password"
           id="password"
-          className="border border-slate-400 w-full"
         />
       </label>
       <div className="text-red-700 text-center animate-bounce">

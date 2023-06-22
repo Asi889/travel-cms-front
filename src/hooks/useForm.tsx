@@ -1,6 +1,6 @@
 import { ChangeEvent, SyntheticEvent, useEffect, useState } from "react";
 
-export default function useForm(initial: { [key: string]: any }) {
+export default function useForm(initial: { [key: string]: string }) {
   // create a state object for our inputs
   const [inputs, setInputs] = useState(initial);
   const initialValues = Object.values(initial).join("");
@@ -14,29 +14,19 @@ export default function useForm(initial: { [key: string]: any }) {
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
     let value = e.target.value as string | number | boolean;
     const { name, type } = e.target;
-    // TODO: check for email and password and make refactor to its own function
-    // debugger;
-    if (type === "number") {
-      value = +value;
-    }
-    if (type === "select") {
-      value = +value;
-    }
-    // if ('file' === type) {
-    //   [value] = e.target.files;
+
+    // if (type === "checkbox") {
+    //   value = e.target.checked;
     // }
-    if (type === "checkbox") {
-      value = e.target.checked;
-    }
 
     setInputs({
       // copy the existing state
       ...inputs,
-      [name]: value,
+      [name]: `${value}`,
     });
   }
 
-  function forceUpdate(newInputs: { [key: string]: any }) {
+  function forceUpdate(newInputs: { [key: string]: string }) {
     setInputs({
       ...inputs,
       ...newInputs,

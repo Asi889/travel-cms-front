@@ -1,5 +1,5 @@
+import { ButtonOld } from "@/components/ButtonOld";
 import { authOptions } from "@/src/auth/auth";
-import { Button } from "@/src/ui/Button";
 import { getServerSession } from "next-auth";
 import Link from "next/link";
 
@@ -14,17 +14,17 @@ export default async function Home() {
       </h2>
       <div className="flex gap-6">
         {!session ? (
-          <Button>
+          <ButtonOld>
             <Link href="/auth/signin">Log In</Link>
-          </Button>
+          </ButtonOld>
         ) : (
-          <Button>
+          <ButtonOld>
             <Link href="/auth/signout">Log Out</Link>
-          </Button>
+          </ButtonOld>
         )}
-        <Button>
+        <ButtonOld>
           <Link href="/auth/register">Register</Link>
-        </Button>
+        </ButtonOld>
       </div>
     </div>
   );

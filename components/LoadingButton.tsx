@@ -1,10 +1,10 @@
-import { Button, ButtonProps } from "./Button";
+import { ButtonOld, ButtonProps } from "./ButtonOld";
 import { Spinner } from "./Spinner";
 
 export const LoadingButton = (props: ButtonProps & { loading?: boolean }) => {
   const { loading, children, ...rest } = props;
   return (
-    <Button {...rest}>
+    <ButtonOld {...rest}>
       {loading ? (
         <div className="flex items-center space-x-2">
           <span>Loading</span>
@@ -13,6 +13,6 @@ export const LoadingButton = (props: ButtonProps & { loading?: boolean }) => {
       ) : (
         children
       )}
-    </Button>
+    </ButtonOld>
   );
 };

@@ -1,4 +1,6 @@
 import { useId } from "react";
+import { Input } from "./ui/input";
+import { Label } from "@radix-ui/react-label";
 
 type TextFieldProps = React.InputHTMLAttributes<HTMLInputElement> & {
   label?: string;
@@ -9,18 +11,14 @@ export const TextField = (props: TextFieldProps) => {
   return (
     <div>
       {label && (
-        <label
+        <Label
           htmlFor={id}
-          className={`text-sm leading-tight text-slate-600 pb-2 block`}
+          className={`text-sm leading-tight text-brand-600 pb-1  block`}
         >
           {label}
-        </label>
+        </Label>
       )}
-      <input
-        id={id}
-        className={`border border-slate-400 w-full px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-slate-600 focus:border-transparent ${props.className}}`}
-        {...props}
-      />
+      <Input id={id} className={` ${props.className}}`} {...props} />
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import { Sidebar } from "@/src/components/Sidebar";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import "./vars.css";
 import { NextAuthProvider } from "./providers";
 
 const inter = Inter({ subsets: ["latin"] });

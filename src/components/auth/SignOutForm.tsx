@@ -1,5 +1,5 @@
 "use client"; // This is a client component 👈🏽
-import { ButtonOld } from "@/components/ButtonOld";
+import { Button } from "@/components/ui/button";
 import { signOut } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -9,7 +9,7 @@ export const SignOutForm = () => {
 
   return (
     <div className="flex justify-center mt-10 gap-x-10">
-      <ButtonOld
+      <Button
         onClick={async () => {
           const status = await signOut({
             redirect: false,
@@ -19,9 +19,9 @@ export const SignOutForm = () => {
         }}
       >
         Log me out
-      </ButtonOld>
+      </Button>
       <Link href={"/admin/dashboard"}>
-        <ButtonOld>Go to Dashboard</ButtonOld>
+        <Button>Go to Dashboard</Button>
       </Link>
     </div>
   );

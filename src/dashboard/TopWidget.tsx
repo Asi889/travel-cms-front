@@ -1,22 +1,41 @@
 "use client";
+import { Button } from "@/components/ui/button";
 import { useSession } from "next-auth/react";
+import Link from "next/link";
 import { redirect } from "next/navigation";
 
 export const TopWidget = () => {
-  const { status } = useSession();
-  //     {
-  //   required: true,
-  //   onUnauthenticated() {
-  //     redirect("/auth/signin");
-  //   },
-  // }
+  const { status, data } = useSession();
 
   if (status === "loading") {
-    return <p>Loading....</p>;
+    return (
+      <section className="py-6 flex justify-between border-b border-brand-200 mb-2">
+        <p>Loading....</p>;
+      </section>
+    );
   }
-  if (status === "unauthenticated") {
+  if (status === "unauthenticated" || !data) {
     return <p>Unauthenticated</p>;
   }
 
-  return <div>TopWidget</div>;
+  return (
+    <section className="py-6 flex justify-between border-b border-brand-200 mb-2">
+      <div>
+        <h1 className="text-2xl leading-tight font-bold text-slate-800">
+          Hey there, {data.user?.name}!
+        </h1>
+        <h2 className="text-base text-slate-600">
+          Welcome to your travel CMS dashboard. Here you can manage your tours
+        </h2>
+      </div>
+
+      <div className="mt-6">
+        <Button className="px-10">
+          <Link href="/admin/tours">
+            <span>Edit Last Tour</span>
+          </Link>
+        </Button>
+      </div>
+    </section>
+  );
 };

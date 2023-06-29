@@ -1,10 +1,10 @@
-@media (min-width: 1024px) {
-  :root {
-    --sidebar-width: 24rem;
-  }
-}
 :root {
   --sidebar-width: 100%;
+}
+@media (min-width: 1024px) {
+  :root {
+    --sidebar-width: 6rem;
+  }
 }
 
 :root {

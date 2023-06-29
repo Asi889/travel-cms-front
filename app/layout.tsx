@@ -22,7 +22,7 @@ export default function RootLayout({
         <NextAuthProvider>
           <div
             id="app"
-            className="grid lg:grid-cols-[auto,1fr] lg:min-h-screen"
+            className="grid lg:grid-cols-[var(--sidebar-width),1fr] lg:min-h-screen"
           >
             <Sidebar />
             <main className="flex-grow">{children}</main>

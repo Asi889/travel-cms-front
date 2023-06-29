@@ -9,6 +9,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { User } from "lucide-react";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 
@@ -27,7 +28,7 @@ const AvatarButton = () => {
         <UserIcon />
       </AvatarImage>
       <AvatarFallback className="uppercase bg-transparent border-brand-900 border">
-        {userInitial}
+        {userInitial ? userInitial : <User />}
       </AvatarFallback>
     </Avatar>
   );
@@ -40,7 +41,10 @@ export const UserNav = () => {
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <button className="mx-auto mt-auto lg:mb-10" type="button">
+        <button
+          className="lg:mx-auto lg:mt-auto lg:mb-10 ml-auto"
+          type="button"
+        >
           <AvatarButton />
         </button>
       </PopoverTrigger>

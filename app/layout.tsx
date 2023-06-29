@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import "./vars.css";
 import { NextAuthProvider } from "./providers";
+import QueryWrapper from "./query-wrapper";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,13 +21,15 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <NextAuthProvider>
-          <div
-            id="app"
-            className="grid lg:grid-cols-[var(--sidebar-width),1fr] lg:min-h-screen"
-          >
-            <Sidebar />
-            <main className="flex-grow">{children}</main>
-          </div>
+          <QueryWrapper>
+            <div
+              id="app"
+              className="grid lg:grid-cols-[var(--sidebar-width),1fr] lg:min-h-screen"
+            >
+              <Sidebar />
+              <main className="flex-grow">{children}</main>
+            </div>
+          </QueryWrapper>
         </NextAuthProvider>
       </body>
     </html>

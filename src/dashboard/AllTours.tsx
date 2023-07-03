@@ -16,8 +16,8 @@ export const AllTours = () => {
     return <div>Something went wrong</div>;
   }
   return (
-    <div>
-      <ul className="grid lg:grid-cols-3">
+    <div className="mt-10">
+      <ul className="grid lg:grid-cols-3 gap-6 lg:gap-10">
         {data.map((tour) => (
           <li key={tour.id}>
             <TourLink tour={tour} />

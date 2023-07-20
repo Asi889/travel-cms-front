@@ -1,4 +1,4 @@
-export interface ApiTour {
+export type ApiTour = {
     id: string;
     createdAt: Date;
     lastUpdatedAt: Date;

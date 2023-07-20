@@ -1,7 +1,7 @@
 import { useSelectedTour } from "@/src/services/tour.service";
 import { FC } from "react";
   
-  interface  TourPageProps {
+  type  TourPageProps = {
     id: TourId;
   };
 

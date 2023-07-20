@@ -39,7 +39,7 @@ export const useTours = () => {
     },
   });
 };
-export const useSelectedTour = (id: TourId) => {
+export const useTour = (id: TourId) => {
   return useQuery({
     queryKey: [Queriers.tour, id],
     queryFn: async () => {

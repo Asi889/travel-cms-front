@@ -2,6 +2,7 @@ import { Sidebar } from "@/src/components/Sidebar";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import "./vars.css";
+import "../app/css/popover.css";
 import { NextAuthProvider } from "./providers";
 import QueryWrapper from "./query-wrapper";
 import { useSession } from "next-auth/react";

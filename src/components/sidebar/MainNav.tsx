@@ -5,6 +5,7 @@ import { HomeIcon } from "@/components/icons/Home.icon";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import DarkModeToggle from "./ToggleDarkMode";
 
 const links = [
   { href: "/", label: "Home", icon: HomeIcon },
@@ -28,6 +29,7 @@ export const MainNav = () => {
   };
   return (
     <ul className="flex lg:flex-col items-center lg:w-full gap-y-4 gap-x-1">
+      <DarkModeToggle />
       {links.map(({ href, label, icon: Icon }) => (
         <li
           key={href}

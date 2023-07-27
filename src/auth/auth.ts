@@ -62,8 +62,6 @@ export const authOptions: NextAuthOptions = {
       return session;
     },
     async jwt({ token, user, account }) {
-      console.log("jwt", { account });
-
       return { ...token, ...user };
     },
   },

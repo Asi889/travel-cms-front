@@ -1,38 +1,31 @@
+import { Queriers } from "@/lib/consts";
+import {
+  DarkModeOptions,
+  getUserPreferences,
+  setUserPreferences,
+} from "@/lib/localStroge";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
-const DARK_MODE_KEY = "darkMode";
-
-const setDarkMode = (newValue: boolean): void => {
-  localStorage.setItem(DARK_MODE_KEY, newValue.toString());
-  if(newValue === true) {
-    document.body.classList.add('dark')
-  }
-  document.body.classList.remove('dark')
+const setDarkMode = (darkMode: DarkModeOptions): void => {
+  setUserPreferences({ darkMode });
 };
 
-const getDarkMode = (): boolean => {
-  const darkMode = localStorage.getItem(DARK_MODE_KEY);
-  if (darkMode === null) {
-    setDarkMode(false);
-    return false;
-  }
-  if(darkMode === "true") {
-    document.body.classList.add('dark')
-  }
-  return darkMode === "true";
+const getDarkMode = (): DarkModeOptions => {
+  const { darkMode } = getUserPreferences();
+  return darkMode;
 };
 
 const useDarkMode = () => {
-  return useQuery<boolean>(["darkMode"], getDarkMode);
+  return useQuery<DarkModeOptions>([Queriers.darkMode], getDarkMode);
 };
 
 const useSetDarkMode = () => {
   const queryClient = useQueryClient();
 
-  return useMutation<void, unknown, boolean>(
-    async (newDarkMode: boolean) => setDarkMode(newDarkMode),
+  return useMutation<void, unknown, DarkModeOptions>(
+    async (newDarkMode: DarkModeOptions) => setDarkMode(newDarkMode),
     {
-      onSuccess: () => queryClient.invalidateQueries(["darkMode"]),
+      onSuccess: () => queryClient.invalidateQueries([Queriers.darkMode]),
     }
   );
 };

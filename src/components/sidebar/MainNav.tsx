@@ -14,7 +14,7 @@ export const MainNav = () => {
   const { status } = useSession();
   const router = useRouter();
 
-  if (status == "loading") {
+  if (status === "loading") {
     return (
       <ul className="flex flex-col bg-brand-200 animate-pulse w-full"></ul>
     );

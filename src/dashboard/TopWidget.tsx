@@ -21,10 +21,10 @@ export const TopWidget = () => {
   return (
     <section className="py-6 flex justify-between border-b border-brand-200 mb-2">
       <div>
-        <h1 className="text-2xl leading-tight font-bold text-slate-800">
+        <h1 className="text-2xl leading-tight font-bold dark:text-white text-slate-800">
           Hey there, {data.user?.name}!
         </h1>
-        <h2 className="text-base text-slate-600">
+        <h2 className="text-base dark:text-slate-400 text-slate-600">
           Welcome to your travel CMS dashboard. Here you can manage your tours
         </h2>
       </div>

@@ -9,3 +9,8 @@ export type ApiTour = {
     points: any[];
     
 }
+export type CreateApiTour = { 
+    title: string;
+    content: string;
+    published: boolean;
+}

@@ -3,9 +3,9 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import "./vars.css";
 import "../app/css/popover.css";
+import "../app/css/addNewCard.css";
 import { NextAuthProvider } from "./providers";
 import QueryWrapper from "./query-wrapper";
-import { useSession } from "next-auth/react";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/src/auth/auth";
 

@@ -3,6 +3,7 @@ import { Redefine } from "@/types/utils";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { getAuthHeader } from "../auth/auth";
 import { ApiTour } from "@/types/TourType";
+import { CreateApiTour } from "@/types/TourType";
 
 type TourId = {
   id: string;
@@ -64,6 +65,28 @@ export const useDeleteTour = () => {
   return useMutation({
     mutationFn: async (id: string) => {
        return await TourService.deleteTour(id);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries([Queriers.tours])
+    },
+  });
+};
+export const useCreateTour = () => {
+  const queryClient = useQueryClient()
+  return useMutation({
+    mutationFn: async (tour: CreateApiTour) => {
+       return await TourService.createTour(tour);
+    },
+    onMutate: async (tour: CreateApiTour) => {
+      await queryClient.cancelQueries([Queriers.tours])
+      const previousTours = queryClient.getQueryData([Queriers.tours])
+      queryClient.setQueryData([Queriers.tours], (old: any) => [{
+        ...tour,
+        createdAt: new Date(),
+        lastUpdatedAt: new Date(),
+        id:-1,
+      },...old])
+      return { previousTours }
     },
     onSuccess: () => {
       queryClient.invalidateQueries([Queriers.tours])
@@ -143,6 +166,23 @@ export const TourService = {
       return true
     } catch (error) {
       throw new Error("Could not delete tour");
+    }
+  },
+  createTour: async (tour: CreateApiTour): Promise<CreateApiTour> => {
+    const { headers } = getAuthHeader();
+    try {
+      const res = await fetch(`${BACKEND_URL}/tour`, {
+        method: "POST",
+        headers: { ...headers },
+        body: JSON.stringify(tour),
+      });
+      if (!res.ok) {
+        throw new Error("Could not create tour");
+      }
+      const data = res.json() as Promise<CreateApiTour>;
+      return data;
+    } catch (error) {
+      throw new Error("Could not create tour");
     }
   }
 };

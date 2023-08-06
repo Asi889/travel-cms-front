@@ -77,17 +77,6 @@ export const useCreateTour = () => {
     mutationFn: async (tour: CreateApiTour) => {
        return await TourService.createTour(tour);
     },
-    onMutate: async (tour: CreateApiTour) => {
-      await queryClient.cancelQueries([Queriers.tours])
-      const previousTours = queryClient.getQueryData([Queriers.tours])
-      queryClient.setQueryData([Queriers.tours], (old: any) => [{
-        ...tour,
-        createdAt: new Date(),
-        lastUpdatedAt: new Date(),
-        id:-1,
-      },...old])
-      return { previousTours }
-    },
     onSuccess: () => {
       queryClient.invalidateQueries([Queriers.tours])
     },

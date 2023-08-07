@@ -9,3 +9,7 @@ export type ApiTour = {
     points: any[];
     
 }
+
+export type TourId = {
+    id: string;
+  };

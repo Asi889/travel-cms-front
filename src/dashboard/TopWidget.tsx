@@ -29,13 +29,13 @@ export const TopWidget = () => {
         </h2>
       </div>
 
-      <div className="mt-6">
+      {/* <div className="mt-6">
         <Button className="px-10">
           <Link href="/admin/tours">
             <span>Edit Last Tour</span>
           </Link>
         </Button>
-      </div>
+      </div> */}
     </section>
   );
 };

@@ -1,10 +1,13 @@
 "use client";
 import { Button } from "@/components/ui/button";
+import { Form, FormControl, FormItem, FormLabel } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import useForm from "@/src/hooks/useForm";
 import { useTour } from "@/src/services/tour.service";
 import { TourId } from "@/types/TourType";
 import Link from "next/link";
-import { use, useEffect, useState } from "react";
+import { BaseSyntheticEvent, use, useEffect, useState } from "react";
+import { FormState, FieldValues, FieldError, ErrorOption, SubmitHandler, SubmitErrorHandler, FieldArrayPath, FieldArray, FieldErrors, RegisterOptions, UseFormRegisterReturn } from "react-hook-form";
 
 
 
@@ -12,14 +15,12 @@ export const TourTopWidget = (props: TourId | any) => {
     const { id } = props;
   const { status, data, isLoading, isError } = useTour(id);
   const [input, setInput] = useState(data?.title);
+  
 
-  useEffect(() => {
-    setInput(data?.title)
-  },[])
-
+  
 // const router = useRouter();
 console.log("routerdata");
-  console.log(data);
+console.log(data);
   
 
 
@@ -45,3 +46,22 @@ console.log("routerdata");
     </section>
   );
 };
+          // <Form >
+          //       <FormItem>
+          //         <FormLabel>Title</FormLabel>
+          //         <FormControl>
+          //           <Input
+          //             id="title"
+          //             value={inputs.title}
+          //             onChange={handleChange}
+          //             name="title"
+          //             placeholder="Enter the title"
+          //             className="text-2xl leading-tight font-bold dark:text-white text-slate-800"
+          //           />
+          //         </FormControl>
+          //       </FormItem>           
+          //     </Form>
+          
+          // const { inputs, handleChange, resetForm } = useForm({
+          //   title: "",
+          // });

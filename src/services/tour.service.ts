@@ -56,6 +56,7 @@ export const useUpdateTour = ( ) => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries([Queriers.tours])
+      queryClient.invalidateQueries([Queriers.tour])
     },
   });
 };

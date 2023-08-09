@@ -1,20 +1,17 @@
 export type ApiTour = {
-  id: string;
-  createdAt: Date;
-  lastUpdatedAt: Date;
-  title: string;
-  content: string;
-  published: boolean;
-  userId: string;
-  points: any[];
-};
+    id: string;
+    createdAt: Date;
+    lastUpdatedAt: Date;
+    title: string;
+    content: string;
+    published: boolean;
+    userId: string;
+    points: any[];
+    
+}
 
 export type TourId = {
-  id: string;
-};
+    id: string;
+  };
 
-export type CreateApiTour = {
-  title: string;
-  content: string;
-  published: boolean;
-};
+  

@@ -39,7 +39,7 @@ export const useTours = () => {
     },
   });
 };
-export const useTour = (id: TourId) => {
+export const useTour = (id: string) => {
   return useQuery({
     queryKey: [Queriers.tour, id],
     queryFn: async () => {
@@ -94,7 +94,7 @@ export const TourService = {
       throw new Error("Could not fetch tours");
     }
   },
-  selectedTour: async (id: TourId): Promise<ApiTour> => {
+  selectedTour: async (id: string): Promise<ApiTour> => {
     const { headers } = getAuthHeader();
 
     try {

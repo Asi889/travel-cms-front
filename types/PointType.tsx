@@ -7,11 +7,19 @@ export type ApiPoint = {
     location: LocationType
     userId: string;
     tourId: string;
-    images: any[];
+    images: ImageType[];
     
 }
 
 export type LocationType = {
     lat: number;
     lon: number;
+  }
+
+  export type ImageType = {
+    fileName: string;
+    path: string;
+    user: { connect: { id: string } };
+    tour?: { connect: { id: string } };
+    point?: { connect: { id: string } };
   }

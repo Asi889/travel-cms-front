@@ -14,9 +14,8 @@ export type CreateApiTour = {
     content: string;
     published: boolean;
 }
-
 export type TourId = {
     id: string;
-};
+}
 
   

@@ -14,16 +14,16 @@ export default function useForm(initial: { [key: string]: string }) {
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
     let value = e.target.value as string | number | boolean;
     const { name, type } = e.target;
-
-    // if (type === "checkbox") {
-    //   value = e.target.checked;
-    // }
-
-    setInputs({
-      // copy the existing state
-      ...inputs,
-      [name]: `${value}`,
-    });
+    
+    if (type === "checkbox") {
+        value = e.target.checked;
+      }
+      
+      setInputs({
+        // copy the existing state
+        ...inputs,
+        [name]: `${value}`,
+      });
   }
 
   function forceUpdate(newInputs: { [key: string]: string }) {

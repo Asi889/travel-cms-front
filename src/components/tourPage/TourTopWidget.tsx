@@ -56,6 +56,9 @@ export const TourTopWidget = (props: TourId) => {
     <section className="py-6 flex justify-between border-b border-brand-200 mb-2">
       <div>
         <div className="flex gap-x-2">
+        <button onClick={focusInput} className="self-end py-3">
+            <EditIcon />
+          </button>
           <Input
             ref={inputRef}
             className={`text-2xl leading-tight font-bold dark:text-white text-slate-800 px-1 pl-2 ${
@@ -67,9 +70,7 @@ export const TourTopWidget = (props: TourId) => {
             type="text"
             onChange={handleChange}
           />
-          <button onClick={focusInput} className="self-end py-3">
-            <EditIcon />
-          </button>
+         
         </div>
       </div>
       <TogglePublish

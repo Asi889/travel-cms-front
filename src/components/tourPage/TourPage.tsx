@@ -1,19 +1,13 @@
-import { useTour } from "@/src/services/tour.service";
-import { FC } from "react";
-  
-  type  TourPageProps = {
-    id: TourId;
-  };
 
-  type TourId = {
-    id: string;
-  };
-  
-  const TourPage: FC<TourPageProps> = ({id}) => {
-  const { status, data, isLoading, isError } = useTour(id);
+import { TourTopWidget } from "./TourTopWidget";
+import { TourId } from "@/types/TourType";
+   
+  const TourPage = ({id}: TourId) => {
 
     return (
-        <div>tour page</div>
+        <div className="container">
+          <TourTopWidget id={id} />
+        </div>
     )
 }
 export default TourPage;
